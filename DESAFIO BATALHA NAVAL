@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+// Definição de constantes para facilitar manutenção do código
+#define TAM 10     // tamanho fixo do tabuleiro (10x10)
+#define NAVIO 3    // tamanho fixo dos navios (3 posições)
+
+int main() {
+    // Mensagem inicial do programa
+    printf("Desenvolvido por Paulo Cesar, Aluno Estacio\n\n");
+
+    // Declaração da matriz que representa o tabuleiro do jogo
+    int tabuleiro[TAM][TAM];  
+    
+    // Variáveis de controle para os loops
+    int i, j;
+
+    // ==========================
+    // 1. Inicializar o tabuleiro
+    // ==========================
+    // Preenche todas as posições da matriz com 0 (água).
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            tabuleiro[i][j] = 0;
+        }
+    }
+
+    // =======================================
+    // 2. Definição das coordenadas dos navios
+    // =======================================
+    // Navio 1 → horizontal
+    int linhaNavioHorizontal = 2;
+    int colunaNavioHorizontal = 4;
+
+    // Navio 2 → vertical
+    int linhaNavioVertical = 5;
+    int colunaNavioVertical = 7;
+
+    // =========================================
+    // 3. Posiciona o navio horizontal na matriz
+    // =========================================
+    for (j = 0; j < NAVIO; j++) {
+        if (colunaNavioHorizontal + j < TAM) { 
+            tabuleiro[linhaNavioHorizontal][colunaNavioHorizontal + j] = 3;
+        }
+    }
+
+    // =======================================
+    // 4. Posiciona o navio vertical na matriz
+    // =======================================
+    for (i = 0; i < NAVIO; i++) {
+        if (linhaNavioVertical + i < TAM) { 
+            tabuleiro[linhaNavioVertical + i][colunaNavioVertical] = 3;
+        }
+    }
+
+    // ==============================
+    // 5. Exibir o tabuleiro completo
+    // ==============================
+    printf("=== TABULEIRO DE BATALHA NAVAL ===\n\n");
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+    // ==========================
+    // 6. Assinatura final
+    // ==========================
+    printf("\n\nDesenvolvido por Paulo Cesar, Aluno Estacio\n");
+
+    return 0;
+}
